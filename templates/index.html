@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flower Classification</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Flower Classification</h1>
+        <form action="/" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="file">Upload an image of a flower:</label>
+                <input type="file" class="form-control-file" id="file" name="file">
+            </div>
+            <button type="submit" class="btn btn-primary">Upload</button>
+        </form>
+        {% if prediction %}
+        <div class="mt-5 text-center">
+            <h2>Prediction: {{ prediction }}</h2>
+            <img src="{{ url_for('static', filename='uploads/' + image_path.split('/')[-1]) }}" alt="Flower Image" class="img-fluid">
+        </div>
+        
+        {% endif %}
+    </div>
+</body>
+</html>
